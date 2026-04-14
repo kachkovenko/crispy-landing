@@ -29,52 +29,12 @@
 <!-- Hero -->
 <section class="hero">
     <div class="container">
-        <div class="hero-card">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <div class="hero-guideline"></div>
-                    <div class="hero-align">
-                        <h1>Криспи</h1>
-                        <svg class="hero-cursor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M5 3l14 8-6.5 1.5L11 19z" fill="#273043"/>
-                            <path d="M5 3l14 8-6.5 1.5L11 19z" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <p class="subtitle">Telegram-бот для&nbsp;команд, которые делают презентации</p>
-                    <p class="description">Проверяет, сжимает, переводит и&nbsp;конвертирует файлы прямо в&nbsp;чате. Без&nbsp;лишних сервисов, без&nbsp;переключения между вкладками.</p>
-                    <div class="hero-buttons">
-                        <button class="hero-btn hero-btn--primary" onclick="document.getElementById('modal').showModal()">Попробовать</button>
-                        <a href="#features" class="hero-btn hero-btn--secondary">Подробнее</a>
-                    </div>
-                </div>
-                <div class="hero-chat">
-                    <div class="chat">
-                        <div class="chat-msg chat-msg--user">
-                            <div class="chat-file">
-                                <span class="chat-file-icon">📎</span>
-                                <span class="chat-file-name">Deck_Q4.pptx</span>
-                                <span class="chat-file-size">48.2 MB</span>
-                            </div>
-                        </div>
-                        <div class="chat-msg chat-msg--user">
-                            <span class="chat-text">Криспи, сожми файл</span>
-                        </div>
-                        <div class="chat-msg chat-msg--bot">
-                            <span class="chat-bot-name">Криспи</span>
-                            <span class="chat-text">Сжато без&nbsp;потери качества</span>
-                            <span class="chat-result">48.2 MB → 12.1 MB <span class="chat-result-pct">−75%</span></span>
-                        </div>
-                        <div class="chat-msg chat-msg--user">
-                            <span class="chat-text">Теперь закинь его в&nbsp;Гугл-слайды</span>
-                        </div>
-                        <div class="chat-msg chat-msg--bot">
-                            <span class="chat-bot-name">Криспи</span>
-                            <span class="chat-text">Загружено на&nbsp;Google Drive</span>
-                            <span class="chat-link">docs.google.com/presentation/d/… ↗</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <h1>Криспи</h1>
+        <p class="subtitle">Telegram-бот для&nbsp;команд, которые делают презентации</p>
+        <p class="description">Проверяет, сжимает, переводит и&nbsp;конвертирует файлы прямо в&nbsp;чате. Без&nbsp;лишних сервисов, без&nbsp;переключения между вкладками.</p>
+        <div class="hero-buttons">
+            <a href="#features" class="hero-btn hero-btn--secondary">Подробнее</a>
+            <button class="hero-btn hero-btn--primary" onclick="document.getElementById('modal').showModal()">Попробовать</button>
         </div>
     </div>
 </section>
@@ -82,11 +42,10 @@
 <!-- Features -->
 <section class="features" id="features">
     <div class="container">
-        <div class="section-card">
         <h2>Что умеет</h2>
 
         <div class="status-group">
-            <h3 class="status-label status-label--stable">Стабильно</h3>
+            <h3 class="status-label">Стабильно</h3>
             <div class="features-grid">
 
                 <div class="feature-card feature-card--hero">
@@ -174,7 +133,7 @@
         </div>
 
         <div class="status-group">
-            <h3 class="status-label status-label--experimental">Экспериментально</h3>
+            <h3 class="status-label">Экспериментально</h3>
             <div class="features-grid">
 
                 <div class="feature-card">
@@ -206,7 +165,7 @@
         </div>
 
         <div class="status-group">
-            <h3 class="status-label status-label--soon">Скоро</h3>
+            <h3 class="status-label">Скоро</h3>
             <div class="features-grid">
 
                 <div class="feature-card">
@@ -219,14 +178,12 @@
 
         <p class="features-cta">Не&nbsp;нашли нужную функцию? <a href="https://t.me/Maxkachkovenko" target="_blank" rel="noopener">Напишите мне</a>&nbsp;— обсудим.</p>
 
-        </div>
     </div>
 </section>
 
 <!-- How it works -->
 <section class="how-it-works" id="how">
     <div class="container">
-        <div class="section-card">
         <h2>Как это работает</h2>
         <div class="steps">
             <div class="step">
@@ -252,14 +209,12 @@
             </div>
         </div>
         <p class="footnote">* Бот проходит закрытое бета-тестирование. Добавить его в&nbsp;чат можно только после согласования заявки.</p>
-        </div>
     </div>
 </section>
 
 <!-- Audience -->
 <section class="audience" id="audience">
     <div class="container">
-        <div class="section-card">
         <h2>Для кого</h2>
         <div class="audience-grid">
             <div class="audience-card">
@@ -275,18 +230,15 @@
                 <div class="audience-desc">Единый инструмент для&nbsp;команды прямо в&nbsp;Telegram. Контроль качества презентаций до&nbsp;отправки клиенту.</div>
             </div>
         </div>
-        </div>
     </div>
 </section>
 
 <!-- Footer -->
 <footer class="footer" id="cta">
     <div class="container">
-        <div class="section-card footer-card">
         <p class="beta-badge">Закрытая бета</p>
         <p class="footer-text">Криспи проходит закрытое бета-тестирование. Чтобы получить доступ, оставьте заявку.</p>
         <a href="https://t.me/Maxkachkovenko" class="cta-link" target="_blank" rel="noopener">Написать в&nbsp;Telegram &rarr;</a>
-        </div>
     </div>
 </footer>
 
