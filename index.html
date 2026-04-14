@@ -23,13 +23,13 @@
             <a href="#audience">Для кого</a>
         </div>
         <button class="nav-cta" onclick="document.getElementById('modal').showModal()">Попробовать</button>
-        <button class="nav-burger" onclick="document.querySelector('.nav-inner').classList.toggle('nav-open')" aria-label="Меню">
+        <button class="nav-burger" onclick="document.querySelector('.nav-inner').classList.toggle('nav-open');document.querySelector('.nav-mobile-overlay').classList.toggle('active')" aria-label="Меню">
             <span></span><span></span><span></span>
         </button>
     </div>
 </nav>
 
-<div class="nav-mobile-overlay" onclick="document.querySelector('.nav-inner').classList.remove('nav-open')"></div>
+<div class="nav-mobile-overlay" onclick="document.querySelector('.nav-inner').classList.remove('nav-open');this.classList.remove('active')"></div>
 
 <!-- Hero -->
 <section class="hero">

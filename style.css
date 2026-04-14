@@ -919,7 +919,7 @@ body > *:not(dialog) {
         order: 11;
     }
 
-    .nav-inner.nav-open ~ .nav-mobile-overlay {
+    .nav-mobile-overlay.active {
         display: block;
     }
 
