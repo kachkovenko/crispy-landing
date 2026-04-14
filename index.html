@@ -23,8 +23,13 @@
             <a href="#audience">Для кого</a>
         </div>
         <button class="nav-cta" onclick="document.getElementById('modal').showModal()">Попробовать</button>
+        <button class="nav-burger" onclick="document.querySelector('.nav-inner').classList.toggle('nav-open')" aria-label="Меню">
+            <span></span><span></span><span></span>
+        </button>
     </div>
 </nav>
+
+<div class="nav-mobile-overlay" onclick="document.querySelector('.nav-inner').classList.remove('nav-open')"></div>
 
 <!-- Hero -->
 <section class="hero">
@@ -90,6 +95,7 @@
             <div class="features-grid">
 
                 <div class="feature-card feature-card--hero">
+                    <input type="checkbox" id="check-expand" class="check-expand-input">
                     <div class="feature-name">Проверка презентаций</div>
                     <div class="feature-desc">Отправьте PPTX&nbsp;— бот найдёт ошибки и&nbsp;предложит автоматический фикс. Вот что проверяется:</div>
                     <div class="check-grid">
@@ -148,6 +154,7 @@
                             <div class="check-detail">Проверяет русский и&nbsp;английский текст. Словарь знает бизнес-термины: батч, фидбек, воркшоп и&nbsp;др.</div>
                         </div>
                     </div>
+                    <label for="check-expand" class="check-expand-btn">Показать ещё<svg class="check-expand-arrow" viewBox="0 0 20 10" fill="none"><path d="M2 2l8 6 8-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></label>
                 </div>
 
                 <div class="feature-card">
