@@ -844,12 +844,11 @@ body > *:not(dialog) {
     }
 
     .hero-content {
-        flex-direction: column;
+        display: block;
     }
 
     .hero-chat {
-        width: 100%;
-        max-width: 320px;
+        display: none;
     }
 }
 
