@@ -225,7 +225,38 @@ body > *:not(dialog) {
 
 .hero-align {
     position: relative;
+    display: inline-block;
+    animation: slide-title 4s ease 0.5s both;
+    transform: translateX(8%);
 }
+
+/* PPT selection frame */
+
+.hero-frame {
+    position: absolute;
+    inset: 0.05em -0.08em;
+    border: 1.5px solid #4a86e8;
+    pointer-events: none;
+    opacity: 0;
+    animation: frame-show 4s ease 0.5s both;
+}
+
+.hero-frame-handle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border: 1.5px solid #4a86e8;
+}
+
+.hero-frame-handle--tl { top: -4px; left: -4px; }
+.hero-frame-handle--tc { top: -4px; left: 50%; margin-left: -4px; }
+.hero-frame-handle--tr { top: -4px; right: -4px; }
+.hero-frame-handle--ml { top: 50%; left: -4px; margin-top: -4px; }
+.hero-frame-handle--mr { top: 50%; right: -4px; margin-top: -4px; }
+.hero-frame-handle--bl { bottom: -4px; left: -4px; }
+.hero-frame-handle--bc { bottom: -4px; left: 50%; margin-left: -4px; }
+.hero-frame-handle--br { bottom: -4px; right: -4px; }
 
 .hero h1 {
     font-size: clamp(48px, 8vw, 160px);
@@ -235,8 +266,6 @@ body > *:not(dialog) {
     margin-bottom: clamp(24px, 3vw, 64px);
     margin-left: -0.04em;
     color: #273043;
-    animation: slide-title 4s ease 0.5s both;
-    transform: translateX(8%);
 }
 
 .hero-cursor {
@@ -334,6 +363,24 @@ body > *:not(dialog) {
     100% {
         opacity: 0;
         transform: scaleY(1);
+    }
+}
+
+@keyframes frame-show {
+    0%, 24% {
+        opacity: 0;
+    }
+    /* appear on cursor click */
+    27% {
+        opacity: 1;
+    }
+    /* stay during drag + guideline */
+    78% {
+        opacity: 1;
+    }
+    /* fade out */
+    85%, 100% {
+        opacity: 0;
     }
 }
 
@@ -989,12 +1036,13 @@ body > *:not(dialog) {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .hero h1 {
+    .hero-align {
         animation: none;
         transform: translateX(0);
     }
     .hero-cursor,
-    .hero-guideline {
+    .hero-guideline,
+    .hero-frame {
         display: none;
     }
 }
