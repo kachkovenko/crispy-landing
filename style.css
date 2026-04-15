@@ -912,6 +912,10 @@ body > *:not(dialog) {
     background: #b78aff;
 }
 
+.hero-chat-mobile {
+    display: none;
+}
+
 /* Check expand (mobile) */
 
 .check-expand-input {
@@ -926,7 +930,7 @@ body > *:not(dialog) {
 
 @media (max-width: 700px) {
     .hero {
-        min-height: 100vh;
+        min-height: 90vh;
         padding: 80px 0 24px;
     }
 
@@ -1032,15 +1036,21 @@ body > *:not(dialog) {
     }
 
     .hero-content {
-        display: flex;
-        flex-direction: column-reverse;
-        height: 100%;
+        display: block;
     }
 
     .hero-chat {
-        width: 100%;
-        max-width: 280px;
-        margin-bottom: clamp(24px, 4vw, 40px);
+        display: none;
+    }
+
+    .hero-chat-mobile {
+        display: block;
+        max-width: 240px;
+        margin: clamp(16px, 3vw, 28px) 0;
+    }
+
+    .hero-chat-mobile .chat {
+        font-size: clamp(10px, 2.8vw, 13px);
     }
 }
 
