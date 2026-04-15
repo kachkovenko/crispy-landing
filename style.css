@@ -712,6 +712,17 @@ body > *:not(dialog) {
     max-width: 70%;
 }
 
+.step-desc a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.2s;
+}
+
+.step-desc a:hover {
+    color: #a674fe;
+}
+
 .features-cta {
     font-size: clamp(14px, 1.1vw, 18px);
     color: rgba(39, 48, 67, 0.5);
@@ -915,7 +926,7 @@ body > *:not(dialog) {
 
 @media (max-width: 700px) {
     .hero {
-        min-height: auto;
+        min-height: 100vh;
         padding: 80px 0 24px;
     }
 
@@ -1021,11 +1032,15 @@ body > *:not(dialog) {
     }
 
     .hero-content {
-        display: block;
+        display: flex;
+        flex-direction: column-reverse;
+        height: 100%;
     }
 
     .hero-chat {
-        display: none;
+        width: 100%;
+        max-width: 280px;
+        margin-bottom: clamp(24px, 4vw, 40px);
     }
 }
 
