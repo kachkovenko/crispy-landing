@@ -21,7 +21,8 @@
         <div class="nav-links">
             <a href="#features">Функции</a>
             <a href="#how">Как это работает</a>
-            <a href="#audience">Для кого</a>
+            <a href="#security">Безопасность</a>
+            <a href="#audience">Сценарии</a>
         </div>
         <button class="nav-cta" onclick="document.getElementById('modal').showModal()">Попробовать</button>
         <button class="nav-burger" onclick="document.querySelector('.nav-inner').classList.toggle('nav-open');document.querySelector('.nav-mobile-overlay').classList.toggle('active')" aria-label="Меню">
@@ -243,7 +244,7 @@
 
                 <div class="feature-card">
                     <div class="feature-name">Генерация картинок</div>
-                    <div class="feature-desc">Создаёт изображения по&nbsp;текстовому описанию через DALL&#8209;E. Быстрые иллюстрации без&nbsp;дизайнера.</div>
+                    <div class="feature-desc">Создаёт изображения по&nbsp;текстовому описанию. Быстрые иллюстрации без&nbsp;дизайнера.</div>
                 </div>
 
             </div>
@@ -288,24 +289,141 @@
     </div>
 </section>
 
-<!-- Audience -->
-<section class="audience" id="audience">
+<!-- Security -->
+<section class="security" id="security">
+    <div class="container">
+        <div class="section-card security-card">
+        <h2>Безопасность</h2>
+        <div class="security-layout">
+            <div class="security-list">
+                <div class="security-item">
+                    <div class="security-icon"><img src="icons/trash.svg" alt=""></div>
+                    <div class="security-title">Файлы не&nbsp;хранятся</div>
+                    <div class="security-desc">Все файлы обрабатываются во&nbsp;временной директории и&nbsp;удаляются сразу после отправки результата. Бот не&nbsp;накапливает пользовательские данные.</div>
+                </div>
+                <div class="security-item">
+                    <div class="security-icon"><img src="icons/hdd.svg" alt=""></div>
+                    <div class="security-title">Локальная обработка</div>
+                    <div class="security-desc">Сжатие, проверка презентаций, OCR, удаление фона, QR-коды&nbsp;— всё работает на&nbsp;нашем сервере, без&nbsp;передачи файлов в&nbsp;сторонние сервисы.</div>
+                </div>
+                <div class="security-item">
+                    <div class="security-icon"><img src="icons/lock.svg" alt=""></div>
+                    <div class="security-title">Контролируемый доступ</div>
+                    <div class="security-desc">Бот работает только в&nbsp;одобренных чатах с&nbsp;авторизованными пользователями. Случайный человек не&nbsp;может им&nbsp;воспользоваться.</div>
+                </div>
+                <div class="security-item">
+                    <div class="security-icon"><img src="icons/shield.svg" alt=""></div>
+                    <div class="security-title">Google Drive&nbsp;— ваш аккаунт</div>
+                    <div class="security-desc">Подключение к&nbsp;Google Drive работает через OAuth с&nbsp;минимальными правами. Бот видит только те&nbsp;файлы, которые сам загрузил.</div>
+                </div>
+                <div class="security-item">
+                    <div class="security-icon"><img src="icons/ai.svg" alt=""></div>
+                    <div class="security-title">Текст для&nbsp;ИИ&nbsp;— только по&nbsp;запросу</div>
+                    <div class="security-desc">Перевод и&nbsp;рерайт отправляются в&nbsp;Claude API только когда вы&nbsp;явно просите. Остальные функции работают без&nbsp;облачных ИИ.</div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+
+<!-- Use cases -->
+<section class="usecases" id="audience">
     <div class="container">
         <div class="section-card">
-        <h2>Для кого</h2>
-        <div class="audience-grid">
-            <div class="audience-card">
-                <div class="audience-role">Дизайнеры презентаций</div>
-                <div class="audience-desc">Проверка вёрстки, сжатие перед отправкой, быстрая конвертация&nbsp;— рутина, которая теперь не&nbsp;отнимает время.</div>
+        <h2>Сценарии использования</h2>
+        <div class="carousel">
+            <button class="carousel-arrow carousel-arrow--prev" aria-label="Назад">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="carousel-track">
+
+                <div class="carousel-slide">
+                    <div class="usecase-text">
+                        <div class="usecase-title">Проверить презентацию перед отправкой клиенту</div>
+                        <div class="usecase-desc">Бот находит кривые шрифты, съехавшие заголовки и&nbsp;проверяет общее выравнивание. Исправляет за&nbsp;секунды.</div>
+                    </div>
+                    <div class="usecase-chat">
+                        <div class="chat">
+                            <div class="chat-msg chat-msg--user"><span class="chat-text">Проверь презентацию</span></div>
+                            <div class="chat-msg chat-msg--bot">
+                                <span class="chat-bot-name">Криспи</span>
+                                <span class="chat-text">Найдено 12&nbsp;замечаний на&nbsp;8&nbsp;слайдах. 9&nbsp;из&nbsp;них могу исправить автоматически.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-slide">
+                    <div class="usecase-text">
+                        <div class="usecase-title">Сжать тяжёлую презентацию или любой файл</div>
+                        <div class="usecase-desc">Без видимой потери качества. Сразу в&nbsp;чате и&nbsp;за&nbsp;одну команду.</div>
+                    </div>
+                    <div class="usecase-chat">
+                        <div class="chat">
+                            <div class="chat-msg chat-msg--user"><span class="chat-text">Сожми файл</span></div>
+                            <div class="chat-msg chat-msg--bot">
+                                <span class="chat-bot-name">Криспи</span>
+                                <span class="chat-text">Сжато без&nbsp;потери качества</span>
+                                <span class="chat-result">48.2 MB → 12.1 MB <span class="chat-result-pct">−75%</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-slide">
+                    <div class="usecase-text">
+                        <div class="usecase-title">Перевести презентацию на&nbsp;другой язык</div>
+                        <div class="usecase-desc">Перевод прямо в&nbsp;файле PPTX. Не&nbsp;нужно копировать и&nbsp;вставлять вручную. Главное&nbsp;— проверить вёрстку после перевода.</div>
+                    </div>
+                    <div class="usecase-chat">
+                        <div class="chat">
+                            <div class="chat-msg chat-msg--user"><span class="chat-text">Переведи на&nbsp;английский</span></div>
+                            <div class="chat-msg chat-msg--bot">
+                                <span class="chat-bot-name">Криспи</span>
+                                <span class="chat-text">Переведено. 24&nbsp;слайда, 186&nbsp;текстовых блоков.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-slide">
+                    <div class="usecase-text">
+                        <div class="usecase-title">Загрузить в&nbsp;Google Slides для&nbsp;совместной работы</div>
+                        <div class="usecase-desc">Одна команда&nbsp;— и&nbsp;файл уже на&nbsp;Google Drive с&nbsp;правами на&nbsp;редактирование.</div>
+                    </div>
+                    <div class="usecase-chat">
+                        <div class="chat">
+                            <div class="chat-msg chat-msg--user"><span class="chat-text">Закинь в&nbsp;Гугл</span></div>
+                            <div class="chat-msg chat-msg--bot">
+                                <span class="chat-bot-name">Криспи</span>
+                                <span class="chat-text">Загружено на&nbsp;Google Drive</span>
+                                <span class="chat-link">docs.google.com/presentation/d/… ↗</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-slide">
+                    <div class="usecase-text">
+                        <div class="usecase-title">Создать QR-код или сконвертировать в&nbsp;PDF</div>
+                        <div class="usecase-desc">За&nbsp;секунды, без&nbsp;необходимости искать нужный сервис или быть у&nbsp;компьютера.</div>
+                    </div>
+                    <div class="usecase-chat">
+                        <div class="chat">
+                            <div class="chat-msg chat-msg--user"><span class="chat-text">Сделай QR на&nbsp;kachkovenko.com</span></div>
+                            <div class="chat-msg chat-msg--bot">
+                                <span class="chat-bot-name">Криспи</span>
+                                <span class="chat-text">QR-код готов ↓</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div class="audience-card">
-                <div class="audience-role">Менеджеры проектов</div>
-                <div class="audience-desc">Объединить PDF, перевести текст, сгенерировать QR&nbsp;— без&nbsp;просьб к&nbsp;дизайнеру и&nbsp;без&nbsp;лишних инструментов.</div>
-            </div>
-            <div class="audience-card">
-                <div class="audience-role">Тимлиды и&nbsp;координаторы</div>
-                <div class="audience-desc">Единый инструмент для&nbsp;команды прямо в&nbsp;Telegram. Контроль качества презентаций до&nbsp;отправки клиенту.</div>
-            </div>
+            <button class="carousel-arrow carousel-arrow--next" aria-label="Вперёд">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
         </div>
         </div>
     </div>
@@ -332,6 +450,35 @@
         <a href="https://t.me/Maxkachkovenko" class="modal-cta" target="_blank" rel="noopener">Написать в&nbsp;Telegram &rarr;</a>
     </div>
 </dialog>
+
+<script>
+(function() {
+    const track = document.querySelector('.carousel-track');
+    if (!track) return;
+    const slides = track.querySelectorAll('.carousel-slide');
+    const prev = document.querySelector('.carousel-arrow--prev');
+    const next = document.querySelector('.carousel-arrow--next');
+    let idx = 0;
+
+    function go(i) {
+        idx = (i + slides.length) % slides.length;
+        slides[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    }
+
+    prev.addEventListener('click', function() { go(idx - 1); });
+    next.addEventListener('click', function() { go(idx + 1); });
+
+    // Update idx on manual scroll/swipe
+    var scrollTimer;
+    track.addEventListener('scroll', function() {
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(function() {
+            var slideWidth = slides[0].offsetWidth;
+            idx = Math.round(track.scrollLeft / (slideWidth + parseInt(getComputedStyle(track).gap))) ;
+        }, 100);
+    });
+})();
+</script>
 
 </body>
 </html>
