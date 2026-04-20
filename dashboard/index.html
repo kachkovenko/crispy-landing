@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crispy — статус</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --panel: #181b22;
+    --text: #e8e8ea;
+    --muted: #8a8f99;
+    --ok: #3ecf8e;
+    --degraded: #f5b14a;
+    --down: #e5484d;
+    --stale: #f5b14a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 64px 20px;
+  }
+  .card {
+    width: 100%;
+    max-width: 480px;
+    background: var(--panel);
+    border-radius: 16px;
+    padding: 28px 28px 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  }
+  h1 {
+    margin: 0 0 4px;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .subtitle {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 24px;
+  }
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .row:first-of-type { border-top: none; }
+  .name { font-size: 15px; }
+  .status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--muted);
+  }
+  .dot.ok { background: var(--ok); box-shadow: 0 0 8px rgba(62,207,142,0.5); }
+  .dot.degraded { background: var(--degraded); box-shadow: 0 0 8px rgba(245,177,74,0.5); }
+  .dot.down { background: var(--down); box-shadow: 0 0 8px rgba(229,72,77,0.5); }
+  .footer {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    font-size: 12px;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .stale {
+    color: var(--stale);
+    font-weight: 500;
+  }
+  .error {
+    color: var(--down);
+    font-size: 14px;
+    text-align: center;
+    padding: 16px 0;
+  }
+  .skeleton {
+    color: var(--muted);
+    font-size: 14px;
+    text-align: center;
+    padding: 16px 0;
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>Crispy — статус</h1>
+  <div class="subtitle">Сводка работоспособности компонентов бота</div>
+  <div id="components"><div class="skeleton">Загрузка…</div></div>
+  <div class="footer">
+    <span id="updated">—</span>
+    <span><a href="/" style="color:var(--muted);text-decoration:none;">← на главную</a></span>
+  </div>
+</div>
+<script>
+  // Источник статуса — публичный GitHub Gist. Обновляется кроном с VPS.
+  // Замени GIST_RAW_URL на raw-URL своего гиста после создания.
+  const GIST_RAW_URL = "https://gist.githubusercontent.com/kachkovenko/5d5b626fe0d15224da69c22831bb3d8f/raw/status.json";
+  const STALE_AFTER_MS = 10 * 60 * 1000;
+  const REFRESH_EVERY_MS = 60 * 1000;
+
+  function fmtAgo(iso) {
+    const now = Date.now();
+    const t = new Date(iso).getTime();
+    const diff = Math.max(0, now - t);
+    const mins = Math.floor(diff / 60000);
+    if (mins < 1) return "только что";
+    if (mins < 60) return mins + " мин назад";
+    const hrs = Math.floor(mins / 60);
+    if (hrs < 24) return hrs + " ч назад";
+    return Math.floor(hrs / 24) + " дн назад";
+  }
+
+  function render(payload) {
+    const root = document.getElementById("components");
+    root.innerHTML = "";
+    for (const c of payload.components) {
+      const row = document.createElement("div");
+      row.className = "row";
+      row.innerHTML =
+        '<span class="name"></span>' +
+        '<span class="status"><span class="dot ' + c.status + '"></span><span class="label"></span></span>';
+      row.querySelector(".name").textContent = c.name;
+      row.querySelector(".label").textContent = c.status;
+      root.appendChild(row);
+    }
+    const updated = document.getElementById("updated");
+    const ageMs = Date.now() - new Date(payload.updated_at).getTime();
+    const stale = ageMs > STALE_AFTER_MS;
+    updated.textContent = "обновлено " + fmtAgo(payload.updated_at);
+    updated.className = stale ? "stale" : "";
+    if (stale) updated.textContent += " · возможно, источник недоступен";
+  }
+
+  function showError(msg) {
+    document.getElementById("components").innerHTML =
+      '<div class="error"></div>';
+    document.querySelector(".error").textContent = msg;
+  }
+
+  async function refresh() {
+    try {
+      const r = await fetch(GIST_RAW_URL + "?_=" + Date.now(), { cache: "no-store" });
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      render(await r.json());
+    } catch (e) {
+      showError("Не удалось загрузить статус");
+    }
+  }
+
+  refresh();
+  setInterval(refresh, REFRESH_EVERY_MS);
+</script>
+</body>
+</html>
