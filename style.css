@@ -977,6 +977,57 @@ body > *:not(dialog) {
     margin-bottom: 24px;
 }
 
+/* Legal footer (site-wide, под CTA-футером) */
+
+.legal-footer {
+    padding: clamp(20px, 2vw, 32px) 0 clamp(24px, 2vw, 40px);
+}
+
+.legal-footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: clamp(16px, 2vw, 32px);
+    padding-top: clamp(20px, 2vw, 28px);
+    border-top: 1px solid rgba(39, 48, 67, 0.08);
+    font-size: clamp(12px, 0.9vw, 14px);
+    color: rgba(39, 48, 67, 0.55);
+    line-height: 1.6;
+}
+
+.legal-footer-left p {
+    margin: 0;
+}
+
+.legal-footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+}
+
+.legal-footer-right a {
+    color: rgba(39, 48, 67, 0.55);
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.legal-footer-right a:hover {
+    color: #273043;
+    text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+    .legal-footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+    .legal-footer-right {
+        align-items: flex-start;
+    }
+}
+
 .cta-link {
     display: inline-block;
     font-size: clamp(14px, 1.1vw, 18px);
