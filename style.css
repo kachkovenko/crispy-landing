@@ -988,8 +988,12 @@ body > *:not(dialog) {
     justify-content: space-between;
     align-items: flex-start;
     gap: clamp(16px, 2vw, 32px);
+    /* Выравнивание с элементами верхнего меню: левый край = логотип nav,
+       правый край = правая грань nav-cta. Значения соответствуют сумме
+       pill-padding (.nav-inner) + margin логотипа / pill-padding справа. */
+    padding-left: clamp(14px, 1.2vw, 22px);
+    padding-right: clamp(10px, 0.8vw, 14px);
     padding-top: clamp(20px, 2vw, 28px);
-    border-top: 1px solid rgba(39, 48, 67, 0.08);
     font-size: clamp(12px, 0.9vw, 14px);
     color: rgba(39, 48, 67, 0.55);
     line-height: 1.6;
