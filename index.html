@@ -505,5 +505,27 @@
 })();
 </script>
 
+<!-- Cookie / analytics notice -->
+<div id="cookie-notice" class="cookie-notice" hidden>
+    <div class="cookie-notice-inner">
+        <p>Этот сайт использует Яндекс.Метрику (включая запись действий через&nbsp;Вебвизор) для&nbsp;сбора статистики посещений. Продолжая пользоваться сайтом, вы&nbsp;соглашаетесь с&nbsp;условиями <a href="/privacy">Политики конфиденциальности</a>.</p>
+        <button type="button" class="cookie-notice-btn" id="cookie-notice-accept">Принять</button>
+    </div>
+</div>
+<script>
+(function() {
+    try {
+        if (localStorage.getItem('crispy-cookie-accepted') === '1') return;
+    } catch (e) { /* localStorage blocked (private mode / strict settings) */ }
+    var notice = document.getElementById('cookie-notice');
+    if (!notice) return;
+    notice.hidden = false;
+    document.getElementById('cookie-notice-accept').addEventListener('click', function() {
+        try { localStorage.setItem('crispy-cookie-accepted', '1'); } catch (e) {}
+        notice.hidden = true;
+    });
+})();
+</script>
+
 </body>
 </html>
